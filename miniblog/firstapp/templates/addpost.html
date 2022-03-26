@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block msg %}
+<div class="container bg-gray">
+    <div class="row">
+        <div class="col-sm-12 text-center ">
+         {%  if messages %}
+         {% for message in messages %}
+         <p {% if messages.tags %} class="{{message.tags}} {% endif %}"> <strong class="text-center">{{message}}</strong></p>
+         
+         {% endfor%}
+     {% endif %}
+        </div>
+    </div>
+</div>
+ 
+   
+
+
+
+
+{% endblock %}
+{% block content %}
+<div class="col-sm-10">
+    <h3 class="mt-2">Add Post here</h3>
+    <form action="" method=post novalidate>
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" class="btn btn-danger btn-small" value="Post">
+       
+
+    </form>
+</div>
+{% endblock %}
